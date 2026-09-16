@@ -1,0 +1,21 @@
+require "json"
+require "erb"
+
+version = ENV.fetch("MPCLIPBOARD_VERSION")
+puts "version = #{version}"
+
+asset = `gh release view \
+    v#{version} \
+    --repo iliabylich/mpclipboard \
+    --json assets \
+    --jq '.assets[] | select(.name | contains(".dmg"))'`.strip
+asset = JSON.parse(asset)
+
+_, sha256 = asset.fetch("digest").split(":")
+
+puts "sha256 = #{sha256}"
+
+erb = File.read("Casks/mpclipboard.erb")
+rendered = ERB.new(erb).result(binding)
+
+File.write("Casks/mpclipboard.rb", rendered)
