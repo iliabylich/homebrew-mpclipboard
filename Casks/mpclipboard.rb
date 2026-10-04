@@ -1,6 +1,6 @@
 cask "mpclipboard" do
-  version "3.0.4"
-  sha256 "f89d0f8eb9f106270a48dfd13dc76cd8112883e02957c44391ca08b1be6c6ba0"
+  version "4.0.0"
+  sha256 "c64f48ab90686157248d2989794a9ec0e7acba9766422a480b90e23a89ffc878"
 
   url "https://github.com/iliabylich/mpclipboard/releases/download/v#{version}/mpclipboard_#{version}_arm64.dmg"
   name "mpclipboard"
